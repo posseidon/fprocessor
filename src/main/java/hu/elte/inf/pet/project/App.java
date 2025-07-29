@@ -1,5 +1,6 @@
 package hu.elte.inf.pet.project;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class App 
