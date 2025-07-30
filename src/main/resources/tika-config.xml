@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <detectors>
+        <!-- Use only built-in detectors, exclude external tools -->
+        <detector class="org.apache.tika.detect.TypeDetector"/>
+        <detector class="org.apache.tika.detect.MagicDetector"/>
+        <detector class="org.apache.tika.detect.zip.ZipContainerDetector"/>
+        <detector class="org.apache.tika.detect.microsoft.ooxml.OOXMLDetector"/>
+    </detectors>
+    
+    <parsers>
+        <!-- Exclude parsers that depend on external tools -->
+        <parser class="org.apache.tika.parser.DefaultParser">
+            <parser-exclude class="org.apache.tika.parser.external.ExternalParser"/>
+            <parser-exclude class="org.apache.tika.parser.executable.ExecutableParser"/>
+            <parser-exclude class="org.apache.tika.parser.video.FLVParser"/>
+        </parser>
+    </parsers>
+    
+    <!-- Disable external command execution -->
+    <service-loader initializableProblemHandler="ignore"/>
+</properties>

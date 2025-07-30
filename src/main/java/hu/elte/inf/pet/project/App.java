@@ -1,13 +1,28 @@
 package hu.elte.inf.pet.project;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class App 
 {
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+
     public static void main( String[] args )
     {
-        Map<String, String> switches = parseArguments(args);
+        logger.info("Starting fprocessor application");
+
+        try {
+            FileHandler fileHandler = new FileHandler("/Users/Thai_Binh_Nguyen/Downloads");
+            fileHandler.processFiles();
+        } catch (IOException e) {
+            logger.error("Error initializing FileHandler: {}", e.getMessage(), e);
+        }
+        
+        logger.info("fprocessor application finished");
     }
 
     private static Map<String, String> parseArguments(String[] args) {
